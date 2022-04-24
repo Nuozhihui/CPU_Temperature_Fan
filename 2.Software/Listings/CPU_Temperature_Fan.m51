@@ -1,15 +1,16 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/25/2022  04:14:37  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/25/2022  04:30:51  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-D:\KEIL\C51\BIN\BL51.EXE 1602-chuankou.obj TO 1602-chuankou
+D:\KEIL\C51\BIN\BL51.EXE .\Objects\MAIN.obj TO .\Objects\CPU_Temperature_Fan PRINT (.\Listings\CPU_Temperature_Fan.m51) 
+>> RAMSIZE (256)
 
 
 MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
 
 
 INPUT MODULES INCLUDED:
-  1602-chuankou.obj (1602_CHUANKOU)
+  .\Objects\MAIN.obj (MAIN)
   D:\KEIL\C51\LIB\C51FPS.LIB (?C?FPADD)
   D:\KEIL\C51\LIB\C51FPS.LIB (?C?FPMUL)
   D:\KEIL\C51\LIB\C51FPS.LIB (?C?FCAST)
@@ -21,7 +22,7 @@ INPUT MODULES INCLUDED:
   D:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
 
 
-LINK MAP OF MODULE:  1602-chuankou (1602_CHUANKOU)
+LINK MAP OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
 
 
             TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
@@ -30,9 +31,9 @@ LINK MAP OF MODULE:  1602-chuankou (1602_CHUANKOU)
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
                     0008H     0018H                  *** GAP ***
-            BIT     0020H.0   0000H.1   UNIT         ?BI?1602_CHUANKOU
+            BIT     0020H.0   0000H.1   UNIT         ?BI?MAIN
                     0020H.1   0000H.7                *** GAP ***
-            DATA    0021H     001CH     UNIT         ?DT?1602_CHUANKOU
+            DATA    0021H     001CH     UNIT         ?DT?MAIN
             IDATA   003DH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
@@ -42,39 +43,39 @@ LINK MAP OF MODULE:  1602-chuankou (1602_CHUANKOU)
                     000EH     0015H                  *** GAP ***
             CODE    0023H     0003H     ABSOLUTE     
             CODE    0026H     02DDH     UNIT         ?C?LIB_CODE
-            CODE    0303H     008CH     UNIT         ?PR?PLAY?1602_CHUANKOU
+            CODE    0303H     008CH     UNIT         ?PR?PLAY?MAIN
             CODE    038FH     008CH     UNIT         ?C_C51STARTUP
-            CODE    041BH     0048H     UNIT         ?PR?SERIAL?1602_CHUANKOU
-            CODE    0463H     0031H     UNIT         ?PR?MAIN?1602_CHUANKOU
+            CODE    041BH     0048H     UNIT         ?PR?SERIAL?MAIN
+            CODE    0463H     0031H     UNIT         ?PR?MAIN?MAIN
             CODE    0494H     0024H     UNIT         ?C_INITSEG
-            CODE    04B8H     0019H     UNIT         ?PR?TIMER0?1602_CHUANKOU
+            CODE    04B8H     0019H     UNIT         ?PR?TIMER0?MAIN
 
 
 
-OVERLAY MAP OF MODULE:   1602-chuankou (1602_CHUANKOU)
+OVERLAY MAP OF MODULE:   .\Objects\CPU_Temperature_Fan (MAIN)
 
 
 SEGMENT
   +--> CALLED SEGMENT
 ---------------------
 ?C_C51STARTUP
-  +--> ?PR?MAIN?1602_CHUANKOU
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:14:37  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:30:51  PAGE 2
 
 
+  +--> ?PR?MAIN?MAIN
   +--> ?C_INITSEG
 
-?PR?MAIN?1602_CHUANKOU
-  +--> ?PR?PLAY?1602_CHUANKOU
+?PR?MAIN?MAIN
+  +--> ?PR?PLAY?MAIN
 
 
 
-SYMBOL TABLE OF MODULE:  1602-chuankou (1602_CHUANKOU)
+SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
 
   VALUE           TYPE          NAME
   ----------------------------------
 
-  -------         MODULE        1602_CHUANKOU
+  -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
@@ -118,10 +119,10 @@ SYMBOL TABLE OF MODULE:  1602-chuankou (1602_CHUANKOU)
   D:00D0H         PUBLIC        PSW
   -------         PROC          SERIAL
   C:041BH         LINE#         62
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:30:51  PAGE 3
+
+
   C:0426H         LINE#         64
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:14:37  PAGE 3
-
-
   C:0428H         LINE#         65
   C:042AH         LINE#         66
   C:042DH         LINE#         95
@@ -178,10 +179,10 @@ SYMBOL TABLE OF MODULE:  1602-chuankou (1602_CHUANKOU)
   C:0476H         LINE#         169
   C:0479H         LINE#         170
   C:047CH         LINE#         171
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:30:51  PAGE 4
+
+
   C:047EH         LINE#         174
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:14:37  PAGE 4
-
-
   C:0481H         LINE#         175
   C:0484H         LINE#         176
   C:0487H         LINE#         177
@@ -202,7 +203,7 @@ SYMBOL TABLE OF MODULE:  1602-chuankou (1602_CHUANKOU)
   C:04CAH         LINE#         198
   C:04CCH         LINE#         199
   -------         ENDPROC       TIMER0
-  -------         ENDMOD        1602_CHUANKOU
+  -------         ENDMOD        MAIN
 
   -------         MODULE        ?C?FPADD
   C:002DH         PUBLIC        ?C?FPADD

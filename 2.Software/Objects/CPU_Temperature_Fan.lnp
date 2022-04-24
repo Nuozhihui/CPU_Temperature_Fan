@@ -1,0 +1,3 @@
+".\Objects\MAIN.obj" 
+TO ".\Objects\CPU_Temperature_Fan" 
+PRINT(".\Listings\CPU_Temperature_Fan.m51") RAMSIZE(256) 
