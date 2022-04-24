@@ -52,104 +52,6 @@ uchar temp,buf,m,count;
 
 bit   playflag=0;
 
-uchar code  cdis1[ ] = {" SERILA TRANFER "};
-uchar code  cdis2[ ] = {"                "};
-
-void delay(unsigned int z)//毫秒级延时
-{
-	unsigned int x,y;
-	for(x = z; x > 0; x--)
-		for(y = 114; y > 0 ; y--);
-}
-/**********************************************************
-
- 延时子程序
-
-**********************************************************/
-void delay1(uint ms) 
-
-{
-   uchar k;
-   while(ms--)
-   {
-     for(k = 0; k < 120; k++);
-   }
-}
-
-/*******************************************************************/
-/*                                                                 */
-/*写指令数据到LCD                                                  */
-/*RS=L，RW=L，E=高脉冲，D0-D7=指令码。                             */
-/*                                                                 */
-/*******************************************************************/
-void lcd_wcmd(uchar cmd)
-{                          
- //  while(lcd_busy());
-    LCD_RS = 0;
-  //  LCD_RW = 0;
-    LCD_EN = 0;
-    _nop_();
-    _nop_(); 
-    P0 = cmd;
-    delayNOP();
-    LCD_EN = 1;
-    delayNOP();
-    LCD_EN = 0;  
-}
-
-/*******************************************************************/
-/*                                                                 */
-/*写显示数据到LCD                                                  */
-/*RS=H，RW=L，E=高脉冲，D0-D7=数据。                               */
-/*                                                                 */
-/*******************************************************************/
-void lcd_wdat(uchar dat)
-{                          
-//   while(lcd_busy());
-    LCD_RS = 1;
-  //  LCD_RW = 0;
-    LCD_EN = 0;
-    P0 = dat;
-    delayNOP();
-    LCD_EN = 1;
-    delayNOP();
-    LCD_EN = 0; 
-}
-
-/*******************************************************************/
-/*                                                                 */
-/*  LCD初始化设定                                                  */
-/*                                                                 */
-/*******************************************************************/
-void lcd_init()
-{ 
-     LCE_RW = 0; 
-    delay1(15);   
-    lcd_wcmd(0x01);      //清除LCD的显示内容            
-    lcd_wcmd(0x38);      //16*2显示，5*7点阵，8位数据
-    delay1(5);
-    lcd_wcmd(0x38);         
-    delay1(5);
-    lcd_wcmd(0x38);         
-    delay1(5);
-
-    lcd_wcmd(0x0c);      //开显示，显示光标，光标闪烁
-    delay1(5);
-
-    lcd_wcmd(0x01);      //清除LCD的显示内容
-    delay1(5);
-}
-
-/*******************************************************************/
-/*                                                                 */
-/*  设定显示位置                                                   */
-/*                                                                 */
-/*******************************************************************/
-
-void lcd_pos(uchar pos)
-{                          
-  lcd_wcmd(pos | 0x80);  //数据指针=80+地址变量
-}
 
 
 /*********************************************************
@@ -218,13 +120,8 @@ void  play()
 {
    if(playflag)
    { 
-     lcd_pos(0x40);           //设置位置为第二行
-     for(m=0;m<2;m++) 
-     {
-	 	lcd_wdat(cdis2[m]);      //清LCD1602第二行
-		delay1(5);
-	 }
-	 lcd_pos(0x40);           //设置位置为第二行
+
+	
      for(m=0;m<2;m++)
      {
 			 wen=(int)RXDdata[m];
@@ -238,8 +135,8 @@ void  play()
 			
 			 }
     //   lcd_pos(0x40+m);       //设置显示位置为第二行
-       lcd_wdat(wen);  //显示字符 
-	   delay1(5);
+      
+	  
      }
 
      playflag=0;              
@@ -248,7 +145,7 @@ void  play()
      for(m=0;m<2;m++)      
      {
 	 	RXDdata[m]=0x20;         //清显存单元    
-		delay1(5);
+
 	 }
    }               
 }
@@ -282,46 +179,12 @@ void main(void)
 		EA	= 1;//总中断允许
 	
 	
-    lcd_init();
-    lcd_pos(0x00);        //设置显示位置为第一行
-    for(m=0;m<16;m++) 
-    {
-		lcd_wdat(cdis1[m]);   //显示字符
-		delay1(5);
-	}
-    lcd_pos(0x40);        //设置显示位置为第二行
-    for(m=0;m<16;m++) 
-    {
-		lcd_wdat(cdis2[m]);   //显示字符            
- 		delay1(5);
-	}
+
 		BIN=0;
     while(1)        
     {
       play();     
-			
-		if(key_s2 == 0)	 //S2按下LED变暗
-		{
-			delay(5);
-			if(key_s2 == 0)
-			{
-				if(pwm_motor_val < 254)
-				{
-					pwm_motor_val++;
-				}
-			}
-		}
-		if(key_s3 == 0)	//S3按键LED变亮
-		{
-			delay(5);
-			if(key_s3 == 0)
-			{
-				if(pwm_motor_val > 0)
-				{
-					pwm_motor_val--;
-				}
-			}
-		}			
+						
     }
 }
 
