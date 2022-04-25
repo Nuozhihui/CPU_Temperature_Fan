@@ -64,6 +64,34 @@ void  serial() interrupt 4
    ES = 0;                //关闭串行中断
    RI = 0;                //清除串行接受标志位
    buf = SBUF;            //从串口缓冲区取得数据
+     
+//   switch(buf)
+//   {
+//      case 0x01:  senddata('1');wen=1;break;  //接受到1，发送字符'Q'给计算机         
+//      case 0x02:  senddata('2');wen=2;break;  //接受到2，发送字符'X'给计算机       
+//      case 0x03:  senddata('3');wen=3;break;  //接受到3，发送字符'-'给计算机       
+//      case 0x04:  senddata('4');wen=4;break;  //接受到4，发送字符'M'给计算机       
+//      case 0x05:  senddata('5');wen=5;break;  //接受到5，发送字符'C'给计算机           
+//      case 0x06:  senddata('6');wen=6;break;  //接受到5，发送字符'U'给计算机
+//      case 0x07:  senddata('7');wen=7;break;  //接受到1，发送字符'Q'给计算机         
+//      case 0x08:  senddata('8');wen=8;break;  //接受到2，发送字符'X'给计算机       
+//      case 0x09:  senddata('9');wen=9;break;  //接受到3，发送字符'-'给计算机       
+//      case 0x00:  senddata('0');wen=0;break;  //接受到4，发送字符'M'给计算机        		 
+//      default:    senddata(buf);wen=0;break;  //接受到其它数据，将其发送给计算机         
+//   }
+//	 if(wen_wei==0)
+//	 {
+//		 
+//		 z_wen=wen*10;
+//		 wen_wei=1;
+//		 
+//	 }else{
+//		 //30  0   90 255
+//		pwm_motor_val=-3.22*(wen+z_wen)+190.6;		
+//		  wen_wei=0;
+//	 }
+
+
    if(buf!=0x0D)
    {   
      if(buf!=0x0A)
@@ -103,13 +131,12 @@ void  play()
 				 wen_1=wen*10;
 
 			 }else if(m==1){
-				 
-				 
-				 pwm_motor_val=(int)(-8.05*(wen_1+wen)+490);
-				 
-
-				
+				 pwm_motor_val=(int)(255-2.4*(wen_1+wen));
+			
 			 }
+    //   lcd_pos(0x40+m);       //设置显示位置为第二行
+      
+	  
      }
 
      playflag=0;              
@@ -119,7 +146,7 @@ void  play()
      {
 	 	RXDdata[m]=0x20;         //清显存单元    
 
-		}
+	 }
    }               
 }
 
@@ -165,7 +192,7 @@ void main(void)
 void timer0() interrupt 1
 {
 	pwm_t++;
-	if(pwm_t == 100)
+	if(pwm_t == 255)
 		_4IN = 0;
 	if(pwm_motor_val == pwm_t)
 		_4IN = 1;					 
