@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/25/2022  04:30:51  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/26/2022  00:49:30  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -43,12 +43,12 @@ LINK MAP OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
                     000EH     0015H                  *** GAP ***
             CODE    0023H     0003H     ABSOLUTE     
             CODE    0026H     02DDH     UNIT         ?C?LIB_CODE
-            CODE    0303H     008CH     UNIT         ?PR?PLAY?MAIN
-            CODE    038FH     008CH     UNIT         ?C_C51STARTUP
-            CODE    041BH     0048H     UNIT         ?PR?SERIAL?MAIN
-            CODE    0463H     0031H     UNIT         ?PR?MAIN?MAIN
-            CODE    0494H     0024H     UNIT         ?C_INITSEG
-            CODE    04B8H     0019H     UNIT         ?PR?TIMER0?MAIN
+            CODE    0303H     008CH     UNIT         ?C_C51STARTUP
+            CODE    038FH     0084H     UNIT         ?PR?PLAY?MAIN
+            CODE    0413H     0048H     UNIT         ?PR?SERIAL?MAIN
+            CODE    045BH     0031H     UNIT         ?PR?MAIN?MAIN
+            CODE    048CH     0024H     UNIT         ?C_INITSEG
+            CODE    04B0H     001AH     UNIT         ?PR?TIMER0?MAIN
 
 
 
@@ -59,7 +59,7 @@ SEGMENT
   +--> CALLED SEGMENT
 ---------------------
 ?C_C51STARTUP
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:30:51  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2022  00:49:30  PAGE 2
 
 
   +--> ?PR?MAIN?MAIN
@@ -81,7 +81,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
-  C:041BH         PUBLIC        serial
+  C:0413H         PUBLIC        serial
   B:00A8H.7       PUBLIC        EA
   D:0021H         PUBLIC        RXDdata
   D:00A8H         PUBLIC        IE
@@ -89,7 +89,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
   B:00A8H.4       PUBLIC        ES
   D:00B8H         PUBLIC        IP
   B:0098H.0       PUBLIC        RI
-  C:0463H         PUBLIC        main
+  C:045BH         PUBLIC        main
   D:0032H         PUBLIC        pwm_t
   B:0090H.0       PUBLIC        _4IN
   D:0033H         PUBLIC        count
@@ -98,7 +98,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
-  C:0303H         PUBLIC        play
+  C:038FH         PUBLIC        play
   D:0034H         PUBLIC        temp
   D:0035H         PUBLIC        buf
   B:00A8H.1       PUBLIC        ET0
@@ -107,7 +107,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
   D:008DH         PUBLIC        TH1
   D:008AH         PUBLIC        TL0
   D:008BH         PUBLIC        TL1
-  C:04B8H         PUBLIC        timer0
+  C:04B0H         PUBLIC        timer0
   B:0020H.0       PUBLIC        playflag
   B:0088H.4       PUBLIC        TR0
   B:0088H.6       PUBLIC        TR1
@@ -118,90 +118,90 @@ SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
   D:003CH         PUBLIC        m
   D:00D0H         PUBLIC        PSW
   -------         PROC          SERIAL
-  C:041BH         LINE#         62
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:30:51  PAGE 3
+  C:0413H         LINE#         62
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2022  00:49:30  PAGE 3
 
 
-  C:0426H         LINE#         64
-  C:0428H         LINE#         65
-  C:042AH         LINE#         66
-  C:042DH         LINE#         95
-  C:0434H         LINE#         96
-  C:0434H         LINE#         97
-  C:0439H         LINE#         98
-  C:0439H         LINE#         99
-  C:043CH         LINE#         100
-  C:0447H         LINE#         101
-  C:0447H         LINE#         102
-  C:044EH         LINE#         103
-  C:0450H         LINE#         104
-  C:0456H         LINE#         105
-  C:0458H         LINE#         106
-  C:0458H         LINE#         107
-  C:0458H         LINE#         108
-  C:0458H         LINE#         109
-  C:045AH         LINE#         110
+  C:041EH         LINE#         64
+  C:0420H         LINE#         65
+  C:0422H         LINE#         66
+  C:0425H         LINE#         67
+  C:042CH         LINE#         68
+  C:042CH         LINE#         69
+  C:0431H         LINE#         70
+  C:0431H         LINE#         71
+  C:0434H         LINE#         72
+  C:043FH         LINE#         73
+  C:043FH         LINE#         74
+  C:0446H         LINE#         75
+  C:0448H         LINE#         76
+  C:044EH         LINE#         77
+  C:0450H         LINE#         78
+  C:0450H         LINE#         79
+  C:0450H         LINE#         80
+  C:0450H         LINE#         81
+  C:0452H         LINE#         82
   -------         ENDPROC       SERIAL
   -------         PROC          PLAY
-  C:0303H         LINE#         119
-  C:0303H         LINE#         120
-  C:0303H         LINE#         121
-  C:0309H         LINE#         122
-  C:0309H         LINE#         125
-  C:031AH         LINE#         126
-  C:031AH         LINE#         127
-  C:0325H         LINE#         129
-  C:0328H         LINE#         130
-  C:0328H         LINE#         131
-  C:0336H         LINE#         133
-  C:033EH         LINE#         134
-  C:036DH         LINE#         136
-  C:036DH         LINE#         140
-  C:0371H         LINE#         142
-  C:0373H         LINE#         143
-  C:0376H         LINE#         145
-  C:0383H         LINE#         146
-  C:0383H         LINE#         147
-  C:038AH         LINE#         149
-  C:038EH         LINE#         150
-  C:038EH         LINE#         151
+  C:038FH         LINE#         91
+  C:038FH         LINE#         92
+  C:038FH         LINE#         93
+  C:0395H         LINE#         94
+  C:0395H         LINE#         97
+  C:03A6H         LINE#         98
+  C:03A6H         LINE#         99
+  C:03B1H         LINE#         101
+  C:03B4H         LINE#         102
+  C:03B4H         LINE#         103
+  C:03C2H         LINE#         105
+  C:03CAH         LINE#         108
+  C:03F1H         LINE#         112
+  C:03F1H         LINE#         113
+  C:03F5H         LINE#         115
+  C:03F7H         LINE#         116
+  C:03FAH         LINE#         118
+  C:0407H         LINE#         119
+  C:0407H         LINE#         120
+  C:040EH         LINE#         122
+  C:0412H         LINE#         123
+  C:0412H         LINE#         124
   -------         ENDPROC       PLAY
   -------         PROC          MAIN
-  C:0463H         LINE#         158
-  C:0463H         LINE#         159
-  C:0463H         LINE#         160
-  C:0466H         LINE#         161
-  C:0469H         LINE#         163
-  C:046CH         LINE#         164
-  C:046FH         LINE#         166
-  C:0472H         LINE#         167
-  C:0474H         LINE#         168
-  C:0476H         LINE#         169
-  C:0479H         LINE#         170
-  C:047CH         LINE#         171
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/25/2022  04:30:51  PAGE 4
+  C:045BH         LINE#         131
+  C:045BH         LINE#         132
+  C:045BH         LINE#         133
+  C:045EH         LINE#         134
+  C:0461H         LINE#         136
+  C:0464H         LINE#         137
+  C:0467H         LINE#         139
+  C:046AH         LINE#         140
+  C:046CH         LINE#         141
+  C:046EH         LINE#         142
+  C:0471H         LINE#         143
+  C:0474H         LINE#         144
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/26/2022  00:49:30  PAGE 4
 
 
-  C:047EH         LINE#         174
-  C:0481H         LINE#         175
-  C:0484H         LINE#         176
-  C:0487H         LINE#         177
-  C:0489H         LINE#         178
-  C:048BH         LINE#         179
-  C:048DH         LINE#         183
-  C:048FH         LINE#         184
-  C:048FH         LINE#         185
-  C:048FH         LINE#         186
-  C:0492H         LINE#         188
+  C:0476H         LINE#         147
+  C:0479H         LINE#         148
+  C:047CH         LINE#         149
+  C:047FH         LINE#         150
+  C:0481H         LINE#         151
+  C:0483H         LINE#         152
+  C:0485H         LINE#         156
+  C:0487H         LINE#         157
+  C:0487H         LINE#         158
+  C:0487H         LINE#         159
+  C:048AH         LINE#         161
   -------         ENDPROC       MAIN
   -------         PROC          TIMER0
-  C:04B8H         LINE#         192
-  C:04BCH         LINE#         194
-  C:04BEH         LINE#         195
-  C:04C3H         LINE#         196
-  C:04C5H         LINE#         197
-  C:04CAH         LINE#         198
-  C:04CCH         LINE#         199
+  C:04B0H         LINE#         165
+  C:04B4H         LINE#         167
+  C:04B6H         LINE#         168
+  C:04BCH         LINE#         169
+  C:04BEH         LINE#         170
+  C:04C3H         LINE#         171
+  C:04C5H         LINE#         172
   -------         ENDPROC       TIMER0
   -------         ENDMOD        MAIN
 
@@ -232,5 +232,5 @@ SYMBOL TABLE OF MODULE:  .\Objects\CPU_Temperature_Fan (MAIN)
   C:02F5H         PUBLIC        ?C?LNEG
   -------         ENDMOD        ?C?LNEG
 
-Program Size: data=37.1 xdata=0 code=1204
+Program Size: data=37.1 xdata=0 code=1197
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
